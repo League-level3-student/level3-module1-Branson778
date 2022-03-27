@@ -15,6 +15,10 @@ public class LongChipCompetition {
 
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
+        lcc.initializeBeatles();
+        for (int i = 0; i < lcc.theBeatles.size(); i++) {
+			//lcc.theBeatles
+		}
 
     }
 
@@ -33,7 +37,9 @@ public class LongChipCompetition {
         return theBeatles;
     }
 }
-
+//DO NOT PASS
+//888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+//DO NOT PASS
 class Beatle {
     private String name;
     private ArrayList<Chip> chips = new ArrayList<Chip>();
