@@ -1,6 +1,7 @@
 package _02_LongChipCompetition;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class LongChipCompetition {
@@ -16,9 +17,19 @@ public class LongChipCompetition {
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
         lcc.initializeBeatles();
+       double longest = 0;
+       String beatle = "";
         for (int i = 0; i < lcc.theBeatles.size(); i++) {
-			//lcc.theBeatles
+	ArrayList<Chip> chips = lcc.theBeatles.get(i).getChips();
+			for (int j = 0; j < chips.size(); j++) {
+				if(chips.get(j).getLength() > longest) {
+					longest = chips.get(j).getLength();
+					beatle = lcc.theBeatles.get(i).getName();
+				}
+			}
 		}
+        System.out.println(beatle + " Had The Longest Chip");
+        System.out.println("The Chip Was "+ longest+ " Inches Long");
 
     }
 
