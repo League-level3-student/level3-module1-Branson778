@@ -1,7 +1,14 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
-public class _02_LogSearch {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class _02_LogSearch implements ActionListener {
     /*
      * Crate a HashMap of Integers for the keys and Strings for the values.
      * Create a GUI with three buttons.
@@ -33,5 +40,35 @@ public class _02_LogSearch {
      *      If this ID exists in the HashMap, remove it. Otherwise, notify the
      *      user that the ID is not in the list.
      */
-
+   JFrame frame = new JFrame();
+   JPanel panel = new JPanel();
+   JButton addId = new JButton();
+   JButton searchId = new JButton();
+   JButton viewList = new JButton();
+   JButton removeId = new JButton();
+   HashMap<Integer, String> stuIds = new HashMap<Integer, String>();
+   public static void main(String[] args) {
+	
+}
+   void setUp() {
+	   frame.add(panel);
+	   panel.add(addId);
+	   panel.add(searchId);
+	   panel.add(viewList);
+	   panel.add(removeId);
+	   addId.addActionListener(this);
+	   searchId.addActionListener(this);
+	   viewList.addActionListener(this);
+	   removeId.addActionListener(this);
+	   frame.setTitle("Log Searcher");
+	   addId.setText("Add Entry");
+	   searchId.setText("Search By ID");
+	   viewList.setText("View List");
+	   removeId.setText("Remove Entry");
+   }
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 }

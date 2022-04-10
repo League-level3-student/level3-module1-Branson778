@@ -1,5 +1,7 @@
 package _05_Retro_Sun;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 /*
@@ -11,6 +13,12 @@ import processing.core.PApplet;
 public class RetroSun extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
+    float x = 400 - 250;
+    float y = WIDTH / 2;    
+    float h = 40;
+    float w = 2 * 250;
+    Rectangle[] rects = new Rectangle[5];
+    int offSet = 0;
 
     // RGB colors
     int[] sunColors = {
@@ -31,6 +39,10 @@ public class RetroSun extends PApplet {
     public void setup() {
         // 2. Set bgColor as the background color
         background(bgColor);
+        for (int i = 0; i < rects.length; i++) {
+			rects[i] = new Rectangle(x, y+offSet, w, h);
+			offSet +=80;
+		}
     }
 
     @Override
@@ -38,9 +50,10 @@ public class RetroSun extends PApplet {
         /*
          * PART 1: Drawing the sun
          */
-    	ellipse(400, 300, 500, 500);
-    	fill(sunColors[0]);
+    	background(bgColor);
     	noStroke();
+    	fill(sunColors[0]);
+    	ellipse(400, 300, 500, 500);
         // Draw an ellipse for the sun in the center of the window
         // Use fill(sunColors[0]) to make it yellow
         // Use noStroke() to remove the black outline
@@ -92,7 +105,7 @@ updatePixels();
         // update the pixel colors
         // https://processing.org/reference/updatePixels_.html
 
-        
+fill(bgColor);
         /*
          * PART 3: Drawing the missing sections at the bottom of the sun
          *
@@ -101,11 +114,26 @@ updatePixels();
          */
 
         // Set the fill color to the background color
-float x = 400 - 250;
-float y = width / 2;    
-float h = 40;
-float w = 2 * 250;
-Rectangle rect1 = new Rectangle(x,y,w,h);
+for (int i = 0; i < rects.length; i++) {
+	rect(rects[i].x,rects[i].y,rects[i].w,rects[i].h);
+	rects[i].y--;
+	if(rects[i].y<HEIGHT/2-250/4) {
+		rects[i].y = HEIGHT/2 +250;
+		rects[i].h = 50;
+	}
+	rects[i].h = map(rects[i].y, HEIGHT/2-250/4, HEIGHT/2+250, 1, 40);
+}
+//rect(x,y,w,h);
+//y--;
+//h--;
+/*
+if(y<HEIGHT/2-250/4) {
+	y = HEIGHT/2 +250;
+	h = 50;
+}
+*/
+//h-=40/(250+(250/4));
+//h = map(y, HEIGHT/2-250/4, HEIGHT/2+250, 1, 40);
         // To draw each rectangle we need to find its x, y, width, height
         // *The y position can be any value within the sun:
         //  float y = width / 2;
